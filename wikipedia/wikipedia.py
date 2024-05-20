@@ -248,7 +248,7 @@ def summary(title, sentences=0, chars=0, auto_suggest=True, redirect=True):
   request = _wiki_request(query_params)
   summary = request['query']['pages'][pageid]['extract']
 
-  return summary
+  return summary, page_info
 
 
 def page(title=None, pageid=None, auto_suggest=True, redirect=True, preload=False):
@@ -709,7 +709,7 @@ def donate():
   webbrowser.open('https://donate.wikimedia.org/w/index.php?title=Special:FundraiserLandingPage', new=2)
 
 
-def _wiki_request(params, timeout=timeout):
+def _wiki_request(params, timeout=5):
   '''
   Make a request to the Wikipedia API using the given search parameters.
   Returns a parsed dict of the JSON response.
